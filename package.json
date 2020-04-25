@@ -10,8 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
-    "request": "^2.83.0"
+    "postman-request": "^2.88.1-postman.22"
   }
 }
