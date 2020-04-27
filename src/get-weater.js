@@ -4,9 +4,20 @@ const url = (name) =>
 
 const getWeatherData = (name, cb) => {
   if (name && cb) {
-    request({ url: url(name), json: true }, cb);
+    request({ url: url(name), json: true }, (err, res) => {
+      if (err) {
+        cb && cb(err, undefined);
+      }
+      const { body } = res;
+      if (body.error) {
+        cb && cb(body.error, undefined);
+      } else {
+        const currentData = body.current;
+        cb && cb(undefined, currentData.temperature);
+      }
+    });
   } else {
-    console.error("Provide a name of a place!!");
+    cb && cb('No name Provided!', undefined);
   }
 };
 
