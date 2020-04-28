@@ -19,6 +19,8 @@ const getLocationData = (locationStr, callback) => {
         const locData = {
           long: features[0].center[0],
           lat: features[0].center[1],
+          location: features[0].text,
+          place_name: features[0].place_name
         };
         localLocationData[locationStr] = locData;
         callback(locData);
