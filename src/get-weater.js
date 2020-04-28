@@ -4,11 +4,10 @@ const url = (name) =>
 
 const getWeatherData = (name, cb) => {
   if (name && cb) {
-    request({ url: url(name), json: true }, (err, res) => {
+    request({ url: url(name), json: true }, (err, { body }) => {
       if (err) {
         cb && cb(err, undefined);
       }
-      const { body } = res;
       if (body.error) {
         cb && cb(body.error, undefined);
       } else {
@@ -17,7 +16,7 @@ const getWeatherData = (name, cb) => {
       }
     });
   } else {
-    cb && cb('No name Provided!', undefined);
+    cb && cb("No name Provided!", undefined);
   }
 };
 

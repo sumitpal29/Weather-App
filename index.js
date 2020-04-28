@@ -1,16 +1,17 @@
 const getWeatherData = require('./src/get-weater');
 const getLocationData = require('./src/get-location');
+const arg = process.argv[2]
+console.log('Forcasting weather for ', arg)
 
-getLocationData('bangalore', (err, response) => {
-    if(err) {
-        console.log(err)
+getLocationData(arg, (err, {location,  place_name: place} = {}) => {
+    if(err || !location) {
+        console.log(err || location)
     } else {
-        console.log(response)
-        getWeatherData(response.location, (err, weatherData) => {
-            if(err) {
-                console.log(err)
+        getWeatherData(location, (error, weatherData) => {
+            if(error) {
+                console.log(error)
             } else {
-                console.log(weatherData)
+                console.log(`weather forcast for ${place} - Temprature ${weatherData} degree celcius.`)
             }
         });
     }
