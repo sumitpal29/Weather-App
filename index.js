@@ -1,20 +1,33 @@
-const getWeatherData = require('./src/get-weater');
-const getLocationData = require('./src/get-location');
-const arg = process.argv[2]
-console.log('Forcasting weather for ', arg)
+const express = require("express");
+const getWeatherData = require("./src/get-weater");
+const getLocationData = require("./src/get-location");
+const app = express();
 
-getLocationData(arg, (err, {location,  place_name: place} = {}) => {
-    if(err || !location) {
-        console.log(err || location)
-    } else {
-        getWeatherData(location, (error, weatherData) => {
-            if(error) {
-                console.log(error)
+app.get("", (req, res) => {
+  let weatherStr = "";
+  if (req.query && req.query.location) {
+    getLocationData(
+      req.query.location,
+      (err, { location, place_name: place } = {}) => {
+        if (err || !location) {
+          console.log(err || location);
+        } else {
+          getWeatherData(location, (error, weatherData) => {
+            if (error) {
+              console.log(error);
             } else {
-                console.log(`weather forcast for ${place} - Temprature ${weatherData} degree celcius.`)
+              weatherStr = `weather forcast for ${place} - Temprature ${weatherData} degree celcius.`;
+              res.send(weatherStr || "Hello Express Server!!");
             }
-        });
-    }
+          });
+        }
+      }
+    );
+  } else {
+    res.send(`<h1>Express</h1>`);
+  }
 });
 
-
+app.listen("3000", () => {
+  console.log("server started!!");
+});
