@@ -1,7 +1,12 @@
+const path = require("path"); // core-module cross os path manipulation
 const express = require("express");
 const getWeatherData = require("./src/get-weater");
 const getLocationData = require("./src/get-location");
 const app = express();
+
+// serving a static dicrectory
+// order app to use express.static(dir)
+app.use(express.static(path.join(__dirname, "./public")));
 
 app.get("", (req, res) => {
   let weatherStr = "";
@@ -26,6 +31,13 @@ app.get("", (req, res) => {
   } else {
     res.send(`<h1>Express</h1>`);
   }
+});
+
+app.get("/weather", (req, res) => {
+  res.status(200).send({
+    temprature: 20,
+    metric: "celcius"
+  })
 });
 
 app.listen("3000", () => {
