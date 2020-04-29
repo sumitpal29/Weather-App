@@ -2,14 +2,48 @@ html{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+body{
+    margin:0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
 header{
     padding: 10px 5%;
-    width: 100%;
+    width: 90%;
     position: fixed;
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+    background-color: #ffffff;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+header > .links a{
+    text-decoration: none;
+    color: #888888;
+    margin: 0 5px;
+    font-size: 14px;
+    transition: color ease 0.35s;
+}
+
+header > .links a.active {
+    color: black;
+}
+
+header > .links a:hover{
+    color: black;
+}
+
+section{
+    padding: 10px 5%;
+    width: 90%;
+    padding-top: 50px;
 }
 
 header h3 {
     font-size: 18px;
     margin: 0 !important;
+    color: #888888;
 }
