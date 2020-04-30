@@ -63,15 +63,60 @@ header h3 {
 .card {
   overflow: hidden;
   padding: 10px;
-  border: 1px solid rgba(0,0,0,0.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   margin: 10px;
   border-radius: 4px;
-  box-shadow: 0px 5px 8px rgba(0,0,0,0.1);
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow ease 0.35s;
   width: 300px;
   text-align: left;
   margin: 0 auto;
 }
 .card > .card-image > img {
-    width: 100%;
+  width: 100%;
+}
+
+.weather-form{
+  margin-bottom: 30px;
+}
+
+.weather-form input[type="text"] {
+  width: 300px;
+  padding: 10px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  margin: 10px;
+  border-radius: 4px;
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow ease 0.35s;
+
+  font-size: 16px;
+}
+
+input[type="text"]:focus, .btn:focus{
+  outline: none;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+.btn{
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow ease 0.35s;
+  cursor: pointer;
+}
+
+.btn:hover{
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+.weather-result{
+  background-color: #ffffff;
+  opacity: 0;
+  transition: opacity ease 0.5s;
+}
+
+.weather-result > .card-image {
+  padding: 20px;
 }

@@ -12,7 +12,7 @@ const getWeatherData = (name, cb) => {
         cb && cb(body.error, undefined);
       } else {
         const currentData = body.current;
-        cb && cb(undefined, currentData.temperature);
+        cb && cb(undefined, currentData);
       }
     });
   } else {

@@ -23,21 +23,29 @@ hbs.registerPartials(partialPath)
 
 app.get("", (req, res) => {
   // let weatherStr = "";
+  res.render("index", {
+    name: "sumit",
+  });
+});
+
+app.get("/weather", (req, res) => {
   if (req.query && req.query.location) {
     getLocationData(
       req.query.location,
       (err, { location, place_name: place } = {}) => {
         if (err || !location) {
-          console.log(err || location);
+          const errData = !location ? 'Cannot find the location' : err;
+          return res.send( {
+            error: errData,
+          });
         } else {
           getWeatherData(location, (error, weatherData) => {
             if (error) {
-              console.log(error);
+              return res.send( {
+                error: errData,
+              });
             } else {
-              // weatherStr = `weather forcast for ${place} - Temprature ${weatherData} degree celcius.`;
-              // res.send(weatherStr || "Hello Express Server!!");
-              res.render("index", {
-                name: "Sumit",
+              return res.status(200).send({
                 place,
                 weatherData,
               });
@@ -47,17 +55,10 @@ app.get("", (req, res) => {
       }
     );
   } else {
-    res.render("index", {
-      name: "sumit",
+    return res.send( {
+      error: "Location not provided",
     });
   }
-});
-
-app.get("/weather", (req, res) => {
-  res.status(200).send({
-    temprature: 20,
-    metric: "celcius",
-  });
 });
 
 app.get("/about", (req, res) => {
