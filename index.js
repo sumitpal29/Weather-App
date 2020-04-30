@@ -60,6 +60,14 @@ app.get("/weather", (req, res) => {
   });
 });
 
+app.get("/about", (req, res) => {
+  res.status(200).render('about');
+});
+
+app.get("*", (req, res) => {
+  res.status(404).render('404');
+});
+
 app.listen("3000", () => {
   console.log("server started!!");
 });
