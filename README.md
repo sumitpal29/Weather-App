@@ -1,6 +1,7 @@
 # Weather-App
 NodeJS application to show the weather for a particular place.
-On landing page use ?location=name_of_the_place query param to get weather data
+Application is up and running here : [https://sumit-pal-weather-app.herokuapp.com/]
+On landing page use https://sumit-pal-weather-app.herokuapp.com/weather?location=name_of_the_place query param to get weather data
 
 ## Dependencies
 - Express
