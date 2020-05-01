@@ -1,6 +1,7 @@
 const path = require("path"); // core-module cross os path manipulation
 const express = require("express");
 const hbs = require('hbs');
+const PORT = process.env.PORT || 3000;
 
 const getWeatherData = require("./src/get-weater");
 const getLocationData = require("./src/get-location");
@@ -23,9 +24,7 @@ hbs.registerPartials(partialPath)
 
 app.get("", (req, res) => {
   // let weatherStr = "";
-  res.render("index", {
-    name: "sumit",
-  });
+  res.render("index");
 });
 
 app.get("/weather", (req, res) => {
@@ -69,6 +68,6 @@ app.get("*", (req, res) => {
   res.status(404).render('404');
 });
 
-app.listen("3000", () => {
+app.listen(PORT, () => {
   console.log("server started!!");
 });
