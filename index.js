@@ -41,7 +41,7 @@ app.get("/weather", (req, res) => {
           getWeatherData(location, (error, weatherData) => {
             if (error) {
               return res.send( {
-                error: errData,
+                error: error,
               });
             } else {
               return res.status(200).send({

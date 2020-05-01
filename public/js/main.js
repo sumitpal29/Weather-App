@@ -36,6 +36,16 @@ weatherForm.addEventListener("submit", (e) => {
       })
       .then((data) => {
         if (data.error) {
+          const error = createEl("h5");
+          if(typeof data.error === "object") {
+            console.log('object error')
+            error.innerHTML = `Sorry an error occoured : ${JSON.stringify(data.error)}`;
+          } else {
+            error.innerHTML = `Error : ${data.error}`;
+          }
+          
+          cardBody.innerHTML = "";
+          cardBody.appendChild(error);
           return;
         }
         const { weatherData } = data;
